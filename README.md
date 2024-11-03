@@ -17,3 +17,18 @@ In the Wasserstein self - attention mechanism, the attention weight calculation 
 The final output `Y` is the weighted sum of the attention weights and the value vectors: `Y = sum(A_ij * v_j) (j = 1 to n)`, where `v_j` is the `j`-th value vector in `V`.
 
 This mechanism can better capture feature relationships and is especially useful in feature extraction and sequence - based data processing tasks.
+
+
+graph TD;
+    A[输入特征序列] --> B[生成查询向量 Q];
+    A --> C[生成键向量 K];
+    A --> D[生成值向量 V];
+    B --> E[对每个查询向量 q_i];
+    C --> E;
+    E --> F[对每个键向量 k_j];
+    F --> G[计算 Wasserstein 距离 W(q_i, k_j)];
+    G --> H[通过函数转换为注意力权重 A_{ij}];
+    D --> I[对每个值向量 v_j];
+    H --> J[计算加权和得到输出 Y];
+    I --> J;
+    J --> K[最终输出];
