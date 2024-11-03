@@ -1,5 +1,8 @@
 import torch
 import torch.nn as nn
+import numpy as np
+from scipy.optimize import linprog
+
 
 class WassersteinSelfAttentionModel(nn.Module):
     def __init__(self, in_dim, hidden_dim):
@@ -56,3 +59,5 @@ class WassersteinSelfAttentionModel(nn.Module):
         attention_weights = torch.nn.functional.softmax(-attention_weights, dim=-1)
         output = torch.bmm(attention_weights, values).view(batch_size, -1)
         return output
+
+
